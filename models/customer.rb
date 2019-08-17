@@ -8,7 +8,7 @@ class Customer
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
-    @funds = options['funds']
+    @funds = options['funds'].to_i
   end
 
   def save()
@@ -47,5 +47,17 @@ class Customer
     return result
   end
 
+  def films_to_be_charged()
+    sql = "SELECT * FROM tickets INNER JOIN films ON tickets.film_id = films.id WHERE customer_id = $1"
+    values = [@id]
+    film_and_ticket_data = SqlRunner.run(sql, values)
+    return film_and_ticket_data.map { |film| Film.new(film)}
+  end
 
+  def remaining_funds()
+    films = self.films_to_be_charged
+    film_payments = films.map{ |film| film.price }
+    combined_payments = film_payments.sum
+    return @funds - combined_payments
+  end
 end
