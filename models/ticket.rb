@@ -2,7 +2,7 @@ require_relative("../db/sql_runner")
 
 class Ticket
 
-  attr_reader :id, :customer_id, :film_id
+  attr_accessor :id, :customer_id, :film_id
 
   def initialize(options)
     @id = options['id'] if ['id']
@@ -39,7 +39,7 @@ class Ticket
   def self.all()
     sql = "SELECT * FROM tickets"
     data = SqlRunner.run(sql)
-    return data.map{|ticket| Casting.new(ticket)}
+    return data.map{|ticket| Ticket.new(ticket)}
   end
 
 end

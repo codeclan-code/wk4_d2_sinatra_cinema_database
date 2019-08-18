@@ -1,4 +1,5 @@
 require_relative("../db/sql_runner")
+require_relative("ticket")
 
 class Customer
 
@@ -58,7 +59,8 @@ class Customer
     films = self.films_to_be_charged
     film_payments = films.map{ |film| film.price }
     combined_payments = film_payments.sum
-    return @funds - combined_payments
+    return @funds = @funds - combined_payments
+    update
   end
 
   def how_many_tickets()
@@ -66,5 +68,18 @@ class Customer
     values = [@id]
     tickets = SqlRunner.run(sql, values)
     tickets.count
+  end
+
+  def spend(film)
+    if @funds >= film.price
+       @funds = @funds - film.price
+     end
+  end
+
+  def buy_ticket(film)
+    self.spend(film)
+    new_ticket = Ticket.new({'customer_id' => @id, 'film_id' => film.id})
+    new_ticket.update
+    new_ticket.save
   end
 end
