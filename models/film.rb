@@ -47,4 +47,11 @@ class Film
     return result
   end
 
+  def size_of_audience
+    sql = "SELECT customer_id FROM tickets INNER JOIN customers ON tickets.customer_id = customers.id WHERE film_id = $1"
+    values = [@id]
+    audience = SqlRunner.run(sql, values)
+    audience.count 
+  end
+
   end

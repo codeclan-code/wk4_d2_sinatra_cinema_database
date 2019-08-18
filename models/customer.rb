@@ -60,4 +60,11 @@ class Customer
     combined_payments = film_payments.sum
     return @funds - combined_payments
   end
+
+  def how_many_tickets()
+    sql = "SELECT * FROM tickets INNER JOIN customers ON customers.id = customer_id WHERE customer_id = $1"
+    values = [@id]
+    tickets = SqlRunner.run(sql, values)
+    tickets.count
+  end
 end
