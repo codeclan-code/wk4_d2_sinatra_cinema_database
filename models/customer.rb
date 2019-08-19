@@ -59,8 +59,9 @@ class Customer
     films = self.films_to_be_charged
     film_payments = films.map{ |film| film.price }
     combined_payments = film_payments.sum
-    return @funds = @funds - combined_payments
+    @funds = @funds - combined_payments
     update
+    return @funds
   end
 
   def how_many_tickets()
