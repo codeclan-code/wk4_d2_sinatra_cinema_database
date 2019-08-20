@@ -15,9 +15,11 @@ class Film
   def self.all
     sql = "SELECT * FROM films"
     films = SqlRunner.run(sql)
+    # p films
     # films.each { |film| p film["title"]}
     films.map { |film| Film.new(film) }
     # films.each { |film| p film.title }
+    # p films
     end
 
   def save()

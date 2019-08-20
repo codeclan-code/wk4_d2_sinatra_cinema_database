@@ -1,10 +1,19 @@
 body {
-  background-color: yellow;
-  text-align: center;
-  font-size: 30px;
   font-family: sans-serif;
+  background-color: xyellow;
+  text-align: center;
+
 }
 
-ul {
+nav ul li
+{
+  display: inline;
+
+    text-align: center;
+}
+
+ul li
+{
   list-style: none;
+  font-size: 30px;
 }

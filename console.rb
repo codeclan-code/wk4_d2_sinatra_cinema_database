@@ -1,13 +1,13 @@
 require_relative('models/customer')
 require_relative('models/film')
 require_relative('models/ticket')
-require_relative('models/screening')
+# require_relative('models/screening')
 
 require('pry')
 
 Customer.delete_all()
 Film.delete_all()
-Screening.delete_all()
+# Screening.delete_all()
 
 customer1 = Customer.new({'name' => 'Johnny', 'funds' => 30})
 customer1.save
@@ -85,32 +85,32 @@ ticket5.save
 
 
 
-screening1 = Screening.new({'film_id' => film2.id, 'time_of_screening' => '20:00', 'tickets_available' => 6})
-screening1.save
-
-screening2 = Screening.new({'film_id' => film3.id, 'time_of_screening' => '21:00', 'tickets_available' => 6})
-screening2.save
-
-screening3 = Screening.new({'film_id' => film7.id, 'time_of_screening' => '15:00', 'tickets_available' => 6})
-screening3.save
-
-screening4 = Screening.new({'film_id' => film5.id, 'time_of_screening' => '11:00', 'tickets_available' => 6})
-screening4.save
-
-screening5 = Screening.new({'film_id' => film1.id, 'time_of_screening' => '19:00', 'tickets_available' => 6})
-screening5.save
-
-screening6 = Screening.new({'film_id' => film5.id, 'time_of_screening' => '22:00', 'tickets_available' => 6})
-screening6.save
-
-screening7 = Screening.new({'film_id' => film2.id, 'time_of_screening' => '10:00', 'tickets_available' => 6})
-screening7.save
-
-screening8 = Screening.new({'film_id' => film7.id, 'time_of_screening' => '16:00', 'tickets_available' => 6})
-screening8.save
-
-screening9 = Screening.new({'film_id' => film6.id, 'time_of_screening' => '21:00', 'tickets_available' => 6})
-screening9.save
+# screening1 = Screening.new({'film_id' => film2.id, 'time_of_screening' => '20:00', 'tickets_available' => 6})
+# screening1.save
+#
+# screening2 = Screening.new({'film_id' => film3.id, 'time_of_screening' => '21:00', 'tickets_available' => 6})
+# screening2.save
+#
+# screening3 = Screening.new({'film_id' => film7.id, 'time_of_screening' => '15:00', 'tickets_available' => 6})
+# screening3.save
+#
+# screening4 = Screening.new({'film_id' => film5.id, 'time_of_screening' => '11:00', 'tickets_available' => 6})
+# screening4.save
+#
+# screening5 = Screening.new({'film_id' => film1.id, 'time_of_screening' => '19:00', 'tickets_available' => 6})
+# screening5.save
+#
+# screening6 = Screening.new({'film_id' => film5.id, 'time_of_screening' => '22:00', 'tickets_available' => 6})
+# screening6.save
+#
+# screening7 = Screening.new({'film_id' => film2.id, 'time_of_screening' => '10:00', 'tickets_available' => 6})
+# screening7.save
+#
+# screening8 = Screening.new({'film_id' => film7.id, 'time_of_screening' => '16:00', 'tickets_available' => 6})
+# screening8.save
+#
+# screening9 = Screening.new({'film_id' => film6.id, 'time_of_screening' => '21:00', 'tickets_available' => 6})
+# screening9.save
 
 
 # customer2.remaining_funds

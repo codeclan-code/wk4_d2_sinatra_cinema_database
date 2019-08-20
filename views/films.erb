@@ -1,11 +1,10 @@
 
-<h1>This is the films page</h1>
+<h3>These are a few of my favourite films</h3>
 
 <ul>
-<% @films.each do |f| %>
-<li><a href="<%= f.title %>">
-  <%= f.title %>
+  <% @films.each do |f| %>
+  <li><a href="/films/<%= f.title %>">
+    <%= f.title %>
   </a></li>
   <% end %>
-
-  </ul>
+</ul>
