@@ -5,11 +5,20 @@ class Film
   attr_reader :id
   attr_accessor :title, :price
 
+
   def initialize(options)
     @id = options['id'] if ['id']
     @title = options['title']
     @price = options['price'].to_i
   end
+
+  def self.all
+    sql = "SELECT * FROM films"
+    films = SqlRunner.run(sql)
+    # films.each { |film| p film["title"]}
+    films.map { |film| Film.new(film) }
+    # films.each { |film| p film.title }
+    end
 
   def save()
     sql = "INSERT INTO films (title, price) VALUES ($1, $2) RETURNING id"
@@ -51,7 +60,7 @@ class Film
     sql = "SELECT customer_id FROM tickets INNER JOIN customers ON tickets.customer_id = customers.id WHERE film_id = $1"
     values = [@id]
     audience = SqlRunner.run(sql, values)
-    audience.count 
+    audience.count
   end
 
   end

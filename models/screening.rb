@@ -20,7 +20,7 @@ class Screening
   end
 
   def update()
-    sql = "UPDATE screenings SET (film_id, time, tickets_available) = ($1, $2, $3) WHERE id = $4"
+    sql = "UPDATE screenings SET (film_id, time_of_screening, tickets_available) = ($1, $2, $3) WHERE id = $4"
     values = [@film_id, @time, @tickets_available, @id]
     SqlRunner.run(sql, values)
   end
@@ -36,8 +36,9 @@ class Screening
     film_data = SqlRunner.run(sql, values)
     film_on_ticket = film_data.map { |film| Film.new(film)}
     customer.buy_ticket(film_on_ticket[0])
-    # @tickets_available = @tickets_available - 1
-    # update
+    @tickets_available = @tickets_available - 1
+    update
   end
+
 
 end

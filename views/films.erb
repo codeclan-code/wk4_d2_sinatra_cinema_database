@@ -1,0 +1,11 @@
+
+<h1>This is the films page</h1>
+
+<ul>
+<% @films.each do |f| %>
+<li><a href="<%= f.title %>">
+  <%= f.title %>
+  </a></li>
+  <% end %>
+
+  </ul>
