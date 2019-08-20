@@ -10,11 +10,13 @@ error Sinatra::NotFound do
 end
 
 get '/' do
+	@title = "Great Movies!"
   erb(:home)
 end
 
 get '/films' do
   @films = Film.all
+	@title = "Great Movies!"
   erb(:films)
 end
 
